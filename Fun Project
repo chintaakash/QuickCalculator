@@ -1,0 +1,30 @@
+#High Effiency Calculator
+#By: Akash Chinta
+
+import re
+
+def calculate(expression):
+    sanitized_expression = re.sub(r'[^\d+\-*/().]', '', expression)
+    
+    try:
+        result = eval(sanitized_expression)
+        return result
+    except Exception as e:
+        return f"Error: {e}"
+
+def main():
+    print("Welcome to the High-Efficiency Calculator!")
+    print("Type 'exit' to quit.")
+
+    while True:
+        user_input = input("Enter a math expression: ")
+
+        if user_input.lower() == 'exit':
+            print("Exiting calculator.")
+            break
+
+        result = calculate(user_input)
+        print("Result:", result)
+
+if __name__ == "__main__":
+    main()
